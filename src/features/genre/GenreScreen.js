@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import MiniDrawer from "./Drawer"; //TODO: make this global
+import MiniDrawer from "../home/Drawer"; //TODO: make this global
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import GenreList from "../genre/GenreList";
-import { fetchGenreList } from "../genre/genreSlice";
+import GenreList from "./GenreList";
+import { fetchGenreList } from "./genreSlice";
 
 const useStyles = makeStyles(() => ({
   root: {

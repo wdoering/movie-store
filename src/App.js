@@ -1,9 +1,9 @@
 import React from "react";
-import { default as GenreScreen } from "./features/home/HomeScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { default as MediaScreen } from "./features/media/MediaHome";
+import GenreScreen from "./features/genre/GenreScreen";
+import MediaScreen from "./features/media/MediaScreen";
 import { Counter } from "./features/counter/Counter";
-import { MEDIA, GENRE, HOME } from "./Constants";
+import { MEDIA, GENRE } from "./Constants";
 import CircularLoading from "./features/loading/CircularLoading";
 const App = () => {
   return (
@@ -14,9 +14,6 @@ const App = () => {
           <Switch>
             <Route path={`/${MEDIA}/:genre`}>
               <MediaScreen></MediaScreen>
-            </Route>
-            <Route path={`/${HOME}`}>
-              <GenreScreen></GenreScreen>
             </Route>
             <Route path={`/${GENRE}`}>
               <GenreScreen></GenreScreen>

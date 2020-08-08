@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import PropTypes from "prop-types";
 
 import MiniDrawer from "../home/Drawer"; //TODO: make this global
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import MediaList from "../media/MediaList";
-import { fetchMediaList } from "../media/mediaSlice";
+import MediaList from "./MediaList";
+import { fetchMediaList } from "./mediaSlice";
 import { getGenreId } from "../genre/genreSlice";
 import { useParams } from "react-router-dom";
 const useStyles = makeStyles(() => ({
@@ -31,8 +30,5 @@ const MediaHome = () => {
     </div>
   );
 };
-// MediaHome.propTypes = {
-//   genre: PropTypes.string,
-// };
 
 export default MediaHome;
