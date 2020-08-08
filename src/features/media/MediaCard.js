@@ -9,53 +9,42 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-
+// import IconButton from "@material-ui/core/IconButton";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ShareIcon from "@material-ui/icons/Share";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import MoreVertIcon from "@material-ui/icons/MoreVert";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     margin: 10,
   },
   media: {
-    height: 140,
+    height: 380,
   },
 });
-/**
- * 
- * {
-      "popularity": 166.471,
-      "vote_count": 2859,
-      "video": false,
-      "poster_path": "/mb7wQv0adK3kjOUr9n93mANHhPJ.jpg",
-      "id": 583083,
-      "adult": false,
-      "backdrop_path": "/wO5QSWZPBT71gMLvrRex0bVc0V9.jpg",
-      "original_language": "en",
-      "original_title": "The Kissing Booth 2",
-      "genre_ids": [
-        35,
-        10749
-      ],
-      "title": "The Kissing Booth 2",
-      "vote_average": 8.2,
-      "overview": "With college decisions looming, Elle juggles her long-distance romance with Noah, changing relationship with bestie Lee and feelings for a new classmate.",
-      "release_date": "2020-07-24"
-    },
- */
-const ProductCard = (props) => {
+const MediaCard = (props) => {
   const classes = useStyles();
   const { media } = props;
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} justify="space-around">
       <CardActionArea data-testid="mediaClickableArea">
         <CardMedia
           className={classes.media}
           component="img"
-          src={props.title}
-          title="Contemplative Reptile"
+          src={`http://image.tmdb.org/t/p/w185/${media.poster_path}`}
+          // src={`http://image.tmdb.org/t/p/w185/${media.backdrop_path}`}
+          title={media.title}
         />
       </CardActionArea>
       <CardContent>
+        {/* <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton> */}
+        <Typography gutterBottom variant="h5" component="h2">
+          {media.vote_average}
+        </Typography>
         <Typography gutterBottom variant="h5" component="h2">
           {media.title}
         </Typography>
@@ -78,13 +67,22 @@ const ProductCard = (props) => {
     </Card>
   );
 };
-ProductCard.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    photoURL: PropTypes.string.isRequired,
-    pricePerGram: PropTypes.string.isRequired,
+MediaCard.propTypes = {
+  media: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    popularity: PropTypes.number.isRequired,
+    vote_count: PropTypes.number.isRequired,
+    video: PropTypes.bool.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    adult: PropTypes.bool.isRequired,
+    backdrop_path: PropTypes.string.isRequired,
+    original_language: PropTypes.string.isRequired,
+    original_title: PropTypes.string.isRequired,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired, //"YYYY-MM-DD"
   }),
 };
-export default ProductCard;
+export default MediaCard;
