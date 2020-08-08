@@ -1,29 +1,33 @@
 import React from "react";
-import HomeScreen from "./features/home/HomeScreen";
+import { default as GenreScreen } from "./features/home/HomeScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import DrawerContainer from "./features/home/DrawerContainer";
+import { default as MediaScreen } from "./features/media/MediaHome";
 import { Counter } from "./features/counter/Counter";
-import { GENRE, HOME } from "./Constants";
+import { MEDIA, GENRE, HOME } from "./Constants";
 const App = () => {
   return (
     <Router>
       <div>
         <Switch>
+          <Route path={`/${MEDIA}/:genre`}>
+            <MediaScreen></MediaScreen>
+          </Route>
           <Route path={`/${HOME}`}>
-            <HomeScreen></HomeScreen>
+            <GenreScreen></GenreScreen>
           </Route>
           <Route path={`/${GENRE}`}>
-            <DrawerContainer></DrawerContainer>
+            <GenreScreen></GenreScreen>
           </Route>
           <Route path="/counter">
             <Counter />
           </Route>
           <Route path="/">
-            <HomeScreen></HomeScreen>
+            <GenreScreen></GenreScreen>
           </Route>
         </Switch>
       </div>
     </Router>
   );
 };
+
 export default App;

@@ -31,4 +31,9 @@ export const selectGenres = (state) => {
   return state.genre.list;
 };
 
+export const getGenreId = (state, genreName) => {
+  const genre = state.genre.list.find((item) => item.name === genreName);
+  if (genre) return genre.id;
+};
+
 export default genreSlice.reducer;

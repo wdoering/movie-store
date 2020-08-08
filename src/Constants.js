@@ -1,4 +1,5 @@
 export const HOME = "home";
+export const MEDIA = "media";
 export const ORDERS = "orders";
 export const GENRE = "genre";
 export const API_KEY = "feab26b61bac418606296e76bfad947d";
