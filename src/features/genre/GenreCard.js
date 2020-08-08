@@ -2,12 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 // import CardMedia from "@material-ui/core/CardMedia";
-import { Link as RouterLink } from "react-router-dom";
-import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
@@ -21,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = (props) => {
+const GenreCard = (props) => {
   const classes = useStyles();
 
   return (
@@ -45,8 +44,8 @@ const ProductCard = (props) => {
     </Link>
   );
 };
-ProductCard.propTypes = {
+GenreCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
-export default ProductCard;
+export default GenreCard;

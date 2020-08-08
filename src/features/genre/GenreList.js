@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { GridList } from "@material-ui/core";
 import GenreCard from "./GenreCard";
 import { selectGenres } from "./genreSlice";
-
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
