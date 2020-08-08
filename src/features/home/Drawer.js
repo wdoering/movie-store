@@ -107,7 +107,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            What are you watching today?
+            Movie Night?
           </Typography>
         </Toolbar>
       </AppBar>

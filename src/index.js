@@ -12,11 +12,20 @@ import { green, grey } from "@material-ui/core/colors";
 const theme = createMuiTheme({
   palette: {
     type: "dark",
-    primary: { main: green[700] },
+    primary: { main: "#22b58f" },
     // primary: green,
     secondary: grey,
   },
 });
+
+// const theme = createMuiTheme({
+//   palette: {
+//     // type: "dark",
+//     primary: { main: green[700] },
+//     // primary: green,
+//     secondary: grey,
+//   },
+// });
 
 ReactDOM.render(
   // found out that issue of double rendering of components

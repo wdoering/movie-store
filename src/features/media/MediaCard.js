@@ -33,7 +33,7 @@ const MediaCard = (props) => {
         <CardMedia
           className={classes.media}
           component="img"
-          src={`http://image.tmdb.org/t/p/w185/${media.poster_path}`}
+          src={`http://image.tmdb.org/t/p/w500/${media.poster_path}`}
           // src={`http://image.tmdb.org/t/p/w185/${media.backdrop_path}`}
           title={media.title}
         />
