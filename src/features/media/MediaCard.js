@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 // import IconButton from "@material-ui/core/IconButton";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 // import ShareIcon from "@material-ui/icons/Share";
@@ -75,7 +76,7 @@ MediaCard.propTypes = {
     video: PropTypes.bool.isRequired,
     poster_path: PropTypes.string.isRequired,
     adult: PropTypes.bool.isRequired,
-    backdrop_path: PropTypes.string.isRequired,
+    backdrop_path: PropTypes.string,
     original_language: PropTypes.string.isRequired,
     original_title: PropTypes.string.isRequired,
     genre_ids: PropTypes.arrayOf(PropTypes.number),

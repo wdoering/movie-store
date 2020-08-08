@@ -8,6 +8,7 @@ import MediaList from "./MediaList";
 import { fetchMediaList } from "./mediaSlice";
 import { getGenreId } from "../genre/genreSlice";
 import { useParams } from "react-router-dom";
+
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -15,18 +16,22 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MediaHome = () => {
+  const classes = useStyles();
   let { genre } = useParams();
   const genreId = useSelector((state) => getGenreId(state, genre));
 
   const dispatch = useDispatch();
   dispatch(fetchMediaList(genreId));
 
-  const classes = useStyles();
+  const getMoreMedia = (pageNumber) => {
+    dispatch(fetchMediaList(genreId, pageNumber));
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <MiniDrawer></MiniDrawer>
-      <MediaList></MediaList>
+      <MediaList getMoreMedia={getMoreMedia}></MediaList>
     </div>
   );
 };

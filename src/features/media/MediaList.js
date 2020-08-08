@@ -2,9 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaCard from "./MediaCard";
 import { useSelector } from "react-redux";
-import { selectMediaList } from "../media/mediaSlice";
-
+import { selectMediaList, selectPageNumber } from "../media/mediaSlice";
+import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { GridList } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
@@ -18,9 +19,17 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-const MediaList = () => {
+
+const MediaList = (props) => {
   const classes = useStyles();
   const mediaList = useSelector(selectMediaList);
+  const pageNumber = useSelector(selectPageNumber);
+
+  const onScrollEnd = () => {
+    props.getMoreMedia(pageNumber);
+  };
+
+  useBottomScrollListener(onScrollEnd);
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
@@ -30,8 +39,8 @@ const MediaList = () => {
         spacing={10}
         cols={3}
       >
-        {mediaList.map((media) => (
-          <MediaCard media={media} key={media.id}></MediaCard>
+        {mediaList.map((media, idx) => (
+          <MediaCard media={media} key={idx}></MediaCard>
         ))}
       </GridList>
     </main>
