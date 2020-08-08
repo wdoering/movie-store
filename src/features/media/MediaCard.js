@@ -47,7 +47,7 @@ const ProductCard = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea data-testid="mediaClickableArea">
         <CardMedia
           className={classes.media}
           component="img"
@@ -65,8 +65,14 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" size="small" color="primary">
-          Add to card <ShoppingCartIcon />
+        <Button
+          data-testid="addToCartButton"
+          variant="outlined"
+          size="small"
+          color="primary"
+        >
+          Add to cart
+          <ShoppingCartIcon />
         </Button>
       </CardActions>
     </Card>
