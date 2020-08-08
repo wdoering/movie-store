@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getGenres } from "../../services/genre";
+import { showSpinner, hideSpinner } from "../loading/loadingSlicer";
 export const genreSlice = createSlice({
   name: "genre",
   initialState: {
@@ -20,9 +21,12 @@ export const { selectGenre, setGenreList } = genreSlice.actions;
 
 export const fetchGenreList = () => async (dispatch) => {
   try {
+    dispatch(showSpinner());
     const apiResponse = await getGenres();
     dispatch(setGenreList(apiResponse.data.genres));
+    dispatch(hideSpinner());
   } catch (error) {
+    dispatch(hideSpinner());
     console.error(error);
   }
 };
