@@ -19,6 +19,5 @@ test("renders the media with a title, overview, and button", () => {
 
   expect(getByText("The Lion King")).toBeInTheDocument();
   expect(getByText("Simba wins in the end")).toBeInTheDocument();
-  expect(getByTestId("addToCartButton")).toBeInTheDocument();
   expect(getByTestId("mediaClickableArea")).toBeInTheDocument();
 });
