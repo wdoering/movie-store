@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMovies } from "../../services/movie";
+import { getMovies, getMovie } from "../../services/movie";
 import { showSpinner, hideSpinner } from "../loading/loadingSlicer";
 import { fetchGenreList } from "../genre/genreSlice";
 export const mediaSlice = createSlice({
   name: "media",
   initialState: {
-    selectedMedia: {},
+    selectedMedia: null,
     list: [],
     pageNumber: 1,
   },
@@ -26,7 +26,7 @@ export const mediaSlice = createSlice({
       // state = state.initialState;
       // no success with above approach
       state.list = [];
-      state.selectedMedia = {};
+      state.selectedMedia = null;
       state.pageNumber = 1;
     },
   },
@@ -60,12 +60,33 @@ export const fetchMediaList = (genreId, pageNumber) => async (dispatch) => {
   }
 };
 
+export const fetchMedia = (mediaId) => async (dispatch) => {
+  try {
+    dispatch(showSpinner());
+    const apiResponse = await getMovie(mediaId);
+    dispatch(setSelectedMedia(apiResponse.data));
+    dispatch(hideSpinner());
+    console.log(apiResponse.data);
+    return apiResponse.data;
+  } catch (error) {
+    dispatch(hideSpinner());
+    console.error(error);
+  }
+};
+
 export const selectMediaList = (state) => {
   return state.media.list;
 };
 
 export const selectPageNumber = (state) => {
   return state.media.pageNumber;
+};
+export const selectMedia = (state, mediaId) => {
+  console.log(state.selectedMedia);
+  if (state.media.selectedMedia) return state.media.selectedMedia;
+  return state.media.list.find((media) => {
+    return media.id === mediaId;
+  });
 };
 
 export default mediaSlice.reducer;

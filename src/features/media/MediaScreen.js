@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import MiniDrawer from "../home/Drawer"; //TODO: make this global
+import MiniDrawer from "../home/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaList from "./MediaList";
