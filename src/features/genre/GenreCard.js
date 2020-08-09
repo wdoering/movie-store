@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+
+import { setGenreId } from "./genreSlice";
+import { fetchMediaList } from "../media/mediaSlice";
 
 const useStyles = makeStyles({
   root: {
@@ -21,19 +24,16 @@ const useStyles = makeStyles({
 });
 
 const GenreCard = (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-
+  const selectGenreAndLoadMovies = () => {
+    dispatch(setGenreId(props.id));
+    dispatch(fetchMediaList(props.id));
+  };
   return (
     <Link underline="none" component={RouterLink} to={`/media/${props.name}`}>
-      <Card className={classes.root}>
+      <Card className={classes.root} onClick={selectGenreAndLoadMovies}>
         <CardActionArea>
-          {/* <CardMedia
-          className={classes.media}
-          component="img"
-          src={props.photoURL}
-          title="Contemplative Reptile"
-        /> */}
-
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {props.name}
