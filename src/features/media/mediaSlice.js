@@ -66,7 +66,6 @@ export const fetchMedia = (mediaId) => async (dispatch) => {
     const apiResponse = await getMovie(mediaId);
     dispatch(setSelectedMedia(apiResponse.data));
     dispatch(hideSpinner());
-    console.log(apiResponse.data);
     return apiResponse.data;
   } catch (error) {
     dispatch(hideSpinner());
@@ -82,7 +81,6 @@ export const selectPageNumber = (state) => {
   return state.media.pageNumber;
 };
 export const selectMedia = (state, mediaId) => {
-  console.log(state.selectedMedia);
   if (state.media.selectedMedia) return state.media.selectedMedia;
   return state.media.list.find((media) => {
     return media.id === mediaId;
