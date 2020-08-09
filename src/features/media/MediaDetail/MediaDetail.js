@@ -47,9 +47,11 @@ const MediaDetail = (props) => {
           {media.overview}
         </Typography>
         <Divider></Divider>
-        <Typography gutterBottom variant="h5" component="h2">
-          Produced by
-        </Typography>
+        {media.production_companies && (
+          <Typography gutterBottom variant="h5" component="h2">
+            Produced by
+          </Typography>
+        )}
         {media.production_companies &&
           media.production_companies.map((item) => (
             <Typography
