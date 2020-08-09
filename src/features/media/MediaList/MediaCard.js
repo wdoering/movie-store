@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     margin: 10,
   },
   media: {
-    minWidth: 270,
+    minWidth: 280,
     height: 480,
   },
 });

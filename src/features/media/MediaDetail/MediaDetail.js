@@ -61,6 +61,9 @@ const MediaDetail = (props) => {
               {item.name}
             </Typography>
           ))}
+        <Typography gutterBottom variant="h5" component="h2">
+          {media.release_date && media.release_date.substring(0, 4)}
+        </Typography>
         <Divider></Divider>
         <Typography gutterBottom variant="h5" component="h2">
           Genres
