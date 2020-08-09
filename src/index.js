@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 import * as serviceWorker from "./serviceWorker";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { green, grey } from "@material-ui/core/colors";
+import { grey } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
@@ -31,11 +31,11 @@ ReactDOM.render(
   // found out that issue of double rendering of components
   // that use materialUI's make styles is due to Strict Mode
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
         <App />
-      </Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
