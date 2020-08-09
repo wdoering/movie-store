@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GenreScreen from "./features/genre/GenreScreen";
-import MediaScreen from "./features/media/MediaScreen";
+import MediaScreen from "./features/media/MediaList/MediaScreen";
 import MediaDetailScreen from "./features/media/MediaDetail/MediaDetailScreen";
 
 import { Counter } from "./features/counter/Counter";

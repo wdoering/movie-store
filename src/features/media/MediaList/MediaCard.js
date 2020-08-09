@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
-import { MEDIA_DETAIL } from "../../Constants";
+import { MEDIA_DETAIL } from "../../../Constants";
 
 const useStyles = makeStyles({
   root: {

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaCard from "./MediaCard";
 import { useSelector } from "react-redux";
-import { selectMediaList, selectPageNumber } from "../media/mediaSlice";
+import { selectMediaList, selectPageNumber } from "../mediaSlice";
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { GridList } from "@material-ui/core";
 
