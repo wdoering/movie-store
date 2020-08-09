@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import MiniDrawer from "../home/Drawer"; //TODO: make this global
+import MiniDrawer from "../../home/Drawer"; //TODO: make this global
 import CssBaseline from "@material-ui/core/CssBaseline";
 import MediaDetail from "./MediaDetail";
 
 import { useParams } from "react-router-dom";
-import { selectMedia, fetchMedia } from "./mediaSlice";
+import { selectMedia, fetchMedia } from "../mediaSlice";
 
 const MediaDetailScreen = () => {
   let { mediaId } = useParams();
