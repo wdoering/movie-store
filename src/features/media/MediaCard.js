@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
+import { MEDIA_DETAIL } from "../../Constants";
+// import CardActions from "@material-ui/core/CardActions";
+// import Button from "@material-ui/core/Button";
+// import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 // import IconButton from "@material-ui/core/IconButton";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -21,7 +24,8 @@ const useStyles = makeStyles({
     margin: 10,
   },
   media: {
-    height: 380,
+    minWidth: 270,
+    height: 480,
   },
 });
 const MediaCard = (props) => {
@@ -31,13 +35,19 @@ const MediaCard = (props) => {
   return (
     <Card className={classes.root} justify="space-around">
       <CardActionArea data-testid="mediaClickableArea">
-        <CardMedia
-          className={classes.media}
-          component="img"
-          src={`http://image.tmdb.org/t/p/w500/${media.poster_path}`}
-          // src={`http://image.tmdb.org/t/p/w185/${media.backdrop_path}`}
-          title={media.title}
-        />
+        <Link
+          underline="none"
+          component={RouterLink}
+          to={`/${MEDIA_DETAIL}/${media.id}`}
+        >
+          <CardMedia
+            className={classes.media}
+            component="img"
+            src={`http://image.tmdb.org/t/p/w500/${media.poster_path}`}
+            // src={`http://image.tmdb.org/t/p/w185/${media.backdrop_path}`}
+            title={media.title}
+          />
+        </Link>
       </CardActionArea>
       <CardContent>
         {/* <IconButton aria-label="add to favorites">
@@ -54,7 +64,7 @@ const MediaCard = (props) => {
           {media.overview}
         </Typography>
       </CardContent>
-      <CardActions>
+      {/* <CardActions>
         <Button
           data-testid="addToCartButton"
           variant="outlined"
@@ -64,7 +74,7 @@ const MediaCard = (props) => {
           Add to cart
           <ShoppingCartIcon />
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

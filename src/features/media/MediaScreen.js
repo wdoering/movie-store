@@ -2,11 +2,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import MiniDrawer from "../home/Drawer"; //TODO: make this global
-import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
 import MediaList from "./MediaList";
 import { fetchMediaList } from "./mediaSlice";
-import { getGenreId } from "../genre/genreSlice";
+import { getGenreIdByName, setGenreId } from "../genre/genreSlice";
 import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
@@ -16,17 +16,17 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MediaHome = () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   let { genre } = useParams();
-  const genreId = useSelector((state) => getGenreId(state, genre));
+  const genreId = useSelector((state) => getGenreIdByName(state, genre));
 
-  const dispatch = useDispatch();
+  dispatch(setGenreId(genreId));
   dispatch(fetchMediaList(genreId));
 
   const getMoreMedia = (pageNumber) => {
     dispatch(fetchMediaList(genreId, pageNumber));
   };
-
   return (
     <div className={classes.root}>
       <CssBaseline />

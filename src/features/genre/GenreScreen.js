@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import GenreList from "./GenreList";
 import { fetchGenreList } from "./genreSlice";
+import { clearMedia } from "../media/mediaSlice";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles(() => ({
 function HomeScreen() {
   const dispatch = useDispatch();
   dispatch(fetchGenreList());
+  dispatch(clearMedia());
 
   const classes = useStyles();
   return (

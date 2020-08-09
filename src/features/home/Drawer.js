@@ -142,9 +142,10 @@ export default function MiniDrawer() {
             }}
           >
             <ListItemIcon>
-              <ShoppingCartIcon />
+              <AssignmentIcon />
             </ListItemIcon>
-            <ListItemText primary={"Cart"} />
+
+            <ListItemText primary={"Categories"} />
           </ListItem>
           <ListItem
             button
@@ -153,9 +154,9 @@ export default function MiniDrawer() {
             }}
           >
             <ListItemIcon>
-              <AssignmentIcon />
+              <ShoppingCartIcon />
             </ListItemIcon>
-            <ListItemText primary={"Favorites"}></ListItemText>
+            <ListItemText primary={"Your cart"}></ListItemText>
           </ListItem>
           <ListItem button>
             <ListItemIcon>

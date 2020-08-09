@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_KEY } from "../Constants";
-export const getMovies = async (genreId, pageNumber) => {
+export const getMovies = async (genreId, pageNumber = 1) => {
   if (!genreId) {
     console.error("genre undefined");
     return;

@@ -10,7 +10,7 @@ export const mediaSlice = createSlice({
     pageNumber: 1,
   },
   reducers: {
-    selectMedia: (state, action) => {
+    setSelectedMedia: (state, action) => {
       state.selectedMedia = action.payload;
     },
     setMediaList: (state, action) => {
@@ -22,14 +22,22 @@ export const mediaSlice = createSlice({
     incrementPageNumber: (state) => {
       state.pageNumber += 1;
     },
+    clearMedia: (state) => {
+      // state = state.initialState;
+      // no success with above approach
+      state.list = [];
+      state.selectedMedia = {};
+      state.pageNumber = 1;
+    },
   },
 });
 
 export const {
-  selectMedia,
+  setSelectedMedia,
   setMediaList,
   incrementPageNumber,
   addMedia,
+  clearMedia,
 } = mediaSlice.actions;
 
 export const fetchMediaList = (genreId, pageNumber) => async (dispatch) => {

@@ -14,10 +14,13 @@ export const genreSlice = createSlice({
     setGenreList: (state, action) => {
       state.list = action.payload;
     },
+    setGenreId: (state, action) => {
+      state.selectedGenre = action.payload;
+    },
   },
 });
 
-export const { selectGenre, setGenreList } = genreSlice.actions;
+export const { selectGenre, setGenreList, setGenreId } = genreSlice.actions;
 
 export const fetchGenreList = () => async (dispatch) => {
   try {
@@ -35,7 +38,10 @@ export const selectGenres = (state) => {
   return state.genre.list;
 };
 
-export const getGenreId = (state, genreName) => {
+export const selectCurrentgenre = (state) => {
+  return state.genre.selectedGenre;
+};
+export const getGenreIdByName = (state, genreName) => {
   const genre = state.genre.list.find((item) => item.name === genreName);
   if (genre) return genre.id;
 };
