@@ -13,12 +13,10 @@ const useStyles = makeStyles(() => ({
     display: "flex",
   },
 }));
-//my real name is GenreScreen or somethin
-function HomeScreen() {
+function GenreScreen() {
   const dispatch = useDispatch();
   dispatch(fetchGenreList());
   dispatch(clearMedia());
-
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -29,4 +27,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default GenreScreen;
