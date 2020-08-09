@@ -7,12 +7,14 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Divider } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
     maxWidth: "80%",
-    marginLeft: 65,
+    marginLeft: 10,
     marginRight: 10,
+    marginTop: 70,
   },
   media: {
     maxWidth: 500,
@@ -32,9 +34,10 @@ const MediaDetail = (props) => {
         src={`http://image.tmdb.org/t/p/w500/${media.poster_path}`}
         title={media.title}
       />
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {media.vote_average}
+          {`Grade: ${media.vote_average}`}
         </Typography>
         <Typography gutterBottom variant="h5" component="h2">
           {media.title}
@@ -43,6 +46,36 @@ const MediaDetail = (props) => {
         <Typography variant="body2" color="textSecondary" component="p">
           {media.overview}
         </Typography>
+        <Divider></Divider>
+        <Typography gutterBottom variant="h5" component="h2">
+          Produced by
+        </Typography>
+        {media.production_companies &&
+          media.production_companies.map((item) => (
+            <Typography
+              key={item.id}
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            >
+              {item.name}
+            </Typography>
+          ))}
+        <Divider></Divider>
+        <Typography gutterBottom variant="h5" component="h2">
+          Genres
+        </Typography>
+        {media.genres &&
+          media.genres.map((item) => (
+            <Typography
+              key={item.id}
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            >
+              {item.name}
+            </Typography>
+          ))}
       </CardContent>
       <CardActions>
         <Button
@@ -57,7 +90,7 @@ const MediaDetail = (props) => {
       </CardActions>
     </Card>
   ) : (
-    <div></div>
+    <div>Movie data not found</div>
   );
 };
 

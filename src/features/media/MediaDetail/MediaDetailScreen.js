@@ -19,7 +19,8 @@ const MediaDetailScreen = () => {
   let { mediaId } = useParams();
   const dispatch = useDispatch();
   let media = useSelector((state) => selectMedia(state, parseInt(mediaId)));
-  if (!media) {
+
+  if (!media || media.genre_ids) {
     dispatch(fetchMedia(mediaId));
   }
   return (

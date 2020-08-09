@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaCard from "./MediaCard";
 import { useSelector } from "react-redux";
-import { selectMediaList, selectPageNumber } from "../mediaSlice";
+import { selectMediaList } from "../mediaSlice";
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { GridList } from "@material-ui/core";
 
@@ -22,11 +22,10 @@ const useStyles = makeStyles((theme) => ({
 
 const MediaList = (props) => {
   const classes = useStyles();
-  const mediaList = useSelector(selectMediaList);
-  const pageNumber = useSelector(selectPageNumber);
+  const mediaList = useSelector(selectMediaList); // consider moving up
 
   const onScrollEnd = () => {
-    props.getMoreMedia(pageNumber);
+    props.getMoreMedia(props.pageNumber);
   };
 
   useBottomScrollListener(onScrollEnd);
