@@ -5,7 +5,11 @@ import MiniDrawer from "../../home/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaList from "../MediaList/MediaList";
-import { fetchMediaList, selectPageNumber } from "../mediaSlice";
+import {
+  fetchMediaList,
+  selectPageNumber,
+  setSelectedMedia,
+} from "../mediaSlice";
 import { getGenreIdByName } from "../../genre/genreSlice";
 import { useParams } from "react-router-dom";
 
@@ -21,7 +25,7 @@ const MediaScreen = () => {
   let { genre } = useParams();
   const genreId = useSelector((state) => getGenreIdByName(state, genre));
   const pgNumber = useSelector(selectPageNumber);
-
+  dispatch(setSelectedMedia(null));
   const getMoreMedia = (pageNumber) => {
     dispatch(fetchMediaList(genreId, pageNumber));
   };
