@@ -2,6 +2,8 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GenreCard from "./GenreCard";
+import { Provider } from "react-redux";
+import store from "../../app/store";
 
 test("renders the card with a text sent by prop", () => {
   const props = {
@@ -10,9 +12,11 @@ test("renders the card with a text sent by prop", () => {
   };
 
   const { getByText } = render(
-    <Router>
-      <GenreCard id={props.id} name={props.name} />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <GenreCard id={props.id} name={props.name} />
+      </Router>
+    </Provider>
   );
 
   expect(getByText("Action")).toBeInTheDocument();
