@@ -1,27 +1,36 @@
-// import React from "react";
-// import { render } from "@testing-library/react";
-// import { BrowserRouter as Router } from "react-router-dom";
-// import MediaList from "./MediaList";
-// import { Provider } from "react-redux";
-// import store from "./app/store";
-// test("renders the media with a title, overview, and button", () => {
-//   const props = {
-//     media: {
-//       title: "The Lion King",
-//       overview: "Simba wins in the end",
-//     },
-//   };
+import React from "react";
+import { render } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
+import MediaList from "./MediaList";
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+const mockStore = configureMockStore();
 
-//   const { getByText, getByTestId } = render(
-//     <Provider store={store}>
-//       <Router>
-//         <MediaList media={props.media} />
-//       </Router>
-//     </Provider>
-//   );
-
-//   //   expect(getByText("The Lion King")).toBeInTheDocument();
-//   //   expect(getByText("Simba wins in the end")).toBeInTheDocument();
-//   //   expect(getByTestId("addToCartButton")).toBeInTheDocument();
-//   //   expect(getByTestId("mediaClickableArea")).toBeInTheDocument();
-// });
+const store = mockStore({
+  media: {
+    selectedMedia: null,
+    list: [
+      {
+        id: 1,
+        vote_average: 9.5,
+        title: "Lion King",
+        overview: "Simba wins",
+        poster_path: "12sahd.jpg",
+        release_date: "2020-01-30",
+      },
+    ],
+    pageNumber: 1,
+  },
+});
+describe("testing store mock", () => {
+  test("renders the card with a text sent by prop", () => {
+    const { getByRole } = render(
+      <Provider store={store}>
+        <Router>
+          <MediaList />
+        </Router>
+      </Provider>
+    );
+    expect(getByRole("button")).toBeInTheDocument();
+  });
+});
