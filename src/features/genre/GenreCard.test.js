@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import GenreCard from "./GenreCard";
 import { Provider } from "react-redux";
 import store from "../../app/store";
