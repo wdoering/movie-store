@@ -1,12 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, fade, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+// import SearchIcon from "@material-ui/icons/Search";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import Switch from "@material-ui/core/Switch";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -19,8 +24,9 @@ import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleDarkMode, selectDarkTheme } from "../loading/loadingSlicer";
 import { ORDERS, HOME } from "../../Constants";
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -45,10 +51,37 @@ const useStyles = makeStyles((theme) => ({
   hide: {
     display: "none",
   },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(3),
+      width: "auto",
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap",
+  },
+  toolbar: {
+    justifyContent: "space-between",
   },
   drawerOpen: {
     width: drawerWidth,
@@ -71,6 +104,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+  let appTheme = useSelector(selectDarkTheme);
+  appTheme = appTheme === "dark" ? true : false;
+  const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -94,7 +130,7 @@ export default function MiniDrawer() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -109,6 +145,17 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap>
             Movie Night?
           </Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={appTheme}
+                  onChange={() => dispatch(toggleDarkMode())}
+                  aria-label="login switch"
+                />
+              }
+            />
+          </FormGroup>
         </Toolbar>
       </AppBar>
       <Drawer

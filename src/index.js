@@ -6,35 +6,13 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 
 import * as serviceWorker from "./serviceWorker";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
-
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-    primary: { main: "#22b58f" },
-    // primary: green,
-    secondary: grey,
-  },
-});
-
-// const theme = createMuiTheme({
-//   palette: {
-//     // type: "dark",
-//     primary: { main: green[700] },
-//     // primary: green,
-//     secondary: grey,
-//   },
-// });
 
 ReactDOM.render(
   // found out that issue of double rendering of components
   // that use materialUI's make styles is due to Strict Mode
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

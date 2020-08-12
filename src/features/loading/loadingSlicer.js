@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: "loading",
   initialState: {
     isLoading: false,
+    isDarkTheme: "dark",
   },
   reducers: {
     block: (state) => {
@@ -12,10 +13,13 @@ export const counterSlice = createSlice({
     release: (state) => {
       state.isLoading = false;
     },
+    changeTheme: (state) => {
+      state.isDarkTheme = state.isDarkTheme === "dark" ? "light" : "dark";
+    },
   },
 });
 
-export const { block, release } = counterSlice.actions;
+export const { block, release, changeTheme } = counterSlice.actions;
 
 export const showSpinner = () => (dispatch) => {
   dispatch(block());
@@ -23,6 +27,10 @@ export const showSpinner = () => (dispatch) => {
 export const hideSpinner = () => (dispatch) => {
   dispatch(release());
 };
-export const selectLoading = (state) => state.loading.isLoading;
+export const toggleDarkMode = () => (dispatch) => {
+  dispatch(changeTheme());
+};
 
+export const selectLoading = (state) => state.loading.isLoading;
+export const selectDarkTheme = (state) => state.loading.isDarkTheme;
 export default counterSlice.reducer;

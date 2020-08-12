@@ -113,8 +113,15 @@ MediaDetail.propTypes = {
     vote_average: PropTypes.number.isRequired,
     poster_path: PropTypes.string.isRequired,
     release_date: PropTypes.string,
-    production_companies: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+    production_companies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        logo_path: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        origin_country: PropTypes.string.isRequired,
+      })
+    ),
+  }),
 };
 MediaDetail.defaultProps = {
   release_date: "",
