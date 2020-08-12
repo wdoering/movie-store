@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
@@ -98,5 +99,24 @@ const MediaDetail = (props) => {
     <div>Movie data not found</div>
   );
 };
+
+
+MediaDetail.propTypes = {
+ media: PropTypes.shape({
+  genres: PropTypes.arrayOf(PropTypes.number),
+  overview:PropTypes.string.isRequired,
+  title:PropTypes.string.isRequired,
+  vote_average:PropTypes.string.isRequired,
+  poster_path:PropTypes.string.isRequired,
+  release_date:PropTypes.string,
+  production_companies:PropTypes.arrayOf(PropTypes.string)
+
+ }).isRequired
+};
+MediaDetail.defaultProps={
+  release_date:"",
+  production_companies:[""]
+}
+
 
 export default MediaDetail;
