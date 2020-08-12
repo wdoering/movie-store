@@ -17,6 +17,7 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["*.test.js", ".eslintrc.js","serviceWorker.js"],
     "rules": {
     }
 };
