@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MediaCard from "./MediaCard";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { selectMediaList } from "../mediaSlice";
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
@@ -44,6 +45,11 @@ const MediaList = (props) => {
       </GridList>
     </main>
   );
+};
+
+MediaList.propTypes = {
+  getMoreMedia:PropTypes.func.isRequired,
+  pageNumber:PropTypes.number.isRequired
 };
 
 export default MediaList;
