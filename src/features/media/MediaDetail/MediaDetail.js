@@ -100,23 +100,25 @@ const MediaDetail = (props) => {
   );
 };
 
-
 MediaDetail.propTypes = {
- media: PropTypes.shape({
-  genres: PropTypes.arrayOf(PropTypes.number),
-  overview:PropTypes.string.isRequired,
-  title:PropTypes.string.isRequired,
-  vote_average:PropTypes.string.isRequired,
-  poster_path:PropTypes.string.isRequired,
-  release_date:PropTypes.string,
-  production_companies:PropTypes.arrayOf(PropTypes.string)
-
- }).isRequired
+  media: PropTypes.shape({
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ),
+    overview: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    production_companies: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };
-MediaDetail.defaultProps={
-  release_date:"",
-  production_companies:[""]
-}
-
+MediaDetail.defaultProps = {
+  release_date: "",
+  production_companies: [""],
+};
 
 export default MediaDetail;
