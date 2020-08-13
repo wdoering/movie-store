@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 const MediaCard = (props) => {
   const classes = useStyles();
   const { media } = props;
-
   return (
     <Card className={classes.root} justify="space-around">
       <CardActionArea data-testid="mediaClickableArea">
