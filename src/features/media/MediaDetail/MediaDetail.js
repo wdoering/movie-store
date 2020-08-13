@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import PropTypes from "prop-types";
@@ -9,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Divider } from "@material-ui/core";
+import { addItemAsync } from "../../shoppingCart/shoppingCartSlice";
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +27,7 @@ const useStyles = makeStyles({
 
 const MediaDetail = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { media } = props;
 
   return media ? (
@@ -89,6 +92,7 @@ const MediaDetail = (props) => {
           variant="outlined"
           size="large"
           color="primary"
+          onClick={() => dispatch(addItemAsync(media))}
         >
           Add to cart
           <ShoppingCartIcon />

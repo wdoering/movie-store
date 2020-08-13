@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/counterSlice";
 import genreReducer from "../features/genre/genreSlice";
 import mediaReducer from "../features/media/mediaSlice";
 import loadingReducer from "../features/loading/loadingSlicer";
+import shoppingCartReducer from "../features/shoppingCart/shoppingCartSlice";
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     genre: genreReducer,
     media: mediaReducer,
     loading: loadingReducer,
+    shoppingCart: shoppingCartReducer,
   },
 });

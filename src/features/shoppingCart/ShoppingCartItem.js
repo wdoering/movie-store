@@ -10,6 +10,8 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import IconButton from "@material-ui/core/IconButton";
+import { useDispatch } from "react-redux";
+import { removeItem } from "../shoppingCart/shoppingCartSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ShoppingCartItem() {
+export default function ShoppingCartItem(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { media } = props;
 
   return (
     <Card className={classes.root}>
@@ -50,7 +54,7 @@ export default function ShoppingCartItem() {
         <CardMedia
           className={classes.poster}
           component="img"
-          src="http://image.tmdb.org/t/p/w500//wlfDxbGEsW58vGhFljKkcR5IxDj.jpg"
+          src={`http://image.tmdb.org/t/p/w500//${media.poster_path}`}
           title="Live from space album cover"
         />
         <div className={classes.controls}>
@@ -65,6 +69,7 @@ export default function ShoppingCartItem() {
             variant="outlined"
             size="large"
             color="primary"
+            onClick={() => dispatch(removeItem(media))}
           >
             Delete
             <DeleteIcon />
@@ -91,10 +96,10 @@ export default function ShoppingCartItem() {
 
       <CardContent className={classes.content}>
         <Typography component="h5" variant="h5">
-          Extraction
+          {media.title}
         </Typography>
         <Typography variant="subtitle1" color="textSecondary">
-          2020
+          {media.release_date.substring(0, 4)}
         </Typography>
         <Typography component="h5" variant="h5">
           $ 1.99

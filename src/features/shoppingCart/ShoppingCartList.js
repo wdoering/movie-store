@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ShoppingCartItem from "./ShoppingCartItem";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-// import { selectShoppingCartList } from "../mediaSlice";
+import { selectShoppingCartList } from "./shoppingCartSlice";
 import { GridList } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -25,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ShoppingCartList = () => {
   const classes = useStyles();
-  //   const shoppingCartList = useSelector(selectShoppingCartList); // consider moving up
-  const shoppingCartList = [{}, {}];
+  const shoppingCartList = useSelector(selectShoppingCartList);
+  // const shoppingCartList = [{}, {}];
 
   return (
     <main className={classes.content}>
@@ -37,10 +38,15 @@ const ShoppingCartList = () => {
         spacing={10}
         cols={1}
       >
-        {shoppingCartList.map((item, idx) => (
-          //   <ShoppingCartItem media={media} key={idx}></ShoppingCartItem>
-          <ShoppingCartItem item={item} key={idx}></ShoppingCartItem>
-        ))}
+        {shoppingCartList.length > 0 ? (
+          shoppingCartList.map((media) => (
+            <ShoppingCartItem media={media} key={media.id}></ShoppingCartItem>
+          ))
+        ) : (
+          <Typography gutterBottom variant="h5" component="h2">
+            No items in your cart :(
+          </Typography>
+        )}
       </GridList>
     </main>
   );
