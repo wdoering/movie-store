@@ -7,7 +7,12 @@ export const shoppingCartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      state.items.push(action.payload);
+      if (
+        !state.items.some((item) => {
+          return item.id === action.payload.id;
+        })
+      )
+        state.items.push(action.payload);
     },
     removeItem: (state, action) => {
       state.items = state.items.filter((item) => {
@@ -22,10 +27,10 @@ export const { addItem, removeItem } = shoppingCartSlice.actions;
 //Thunk example with loading mock
 export const addItemAsync = (item) => (dispatch) => {
   dispatch(showSpinner());
-  setTimeout(() => {
-    dispatch(addItem(item));
-    dispatch(hideSpinner());
-  }, 2000);
+  // setTimeout(() => {
+  dispatch(addItem(item));
+  dispatch(hideSpinner());
+  // }, 2000);
 };
 
 //selector function
