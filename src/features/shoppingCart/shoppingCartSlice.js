@@ -27,15 +27,21 @@ export const { addItem, removeItem } = shoppingCartSlice.actions;
 //Thunk example with loading mock
 export const addItemAsync = (item) => (dispatch) => {
   dispatch(showSpinner());
-  // setTimeout(() => {
-  dispatch(addItem(item));
-  dispatch(hideSpinner());
-  // }, 2000);
+  setTimeout(() => {
+    dispatch(addItem(item));
+    dispatch(hideSpinner());
+  }, 500);
 };
 
 //selector function
 export const selectShoppingCartList = (state) => {
   return state.shoppingCart.items;
+};
+
+export const isMovieInCart = (id) => (state) => {
+  return state.shoppingCart.items.some((item) => {
+    return item.id === id;
+  });
 };
 
 export default shoppingCartSlice.reducer;

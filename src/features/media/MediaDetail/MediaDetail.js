@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import PropTypes from "prop-types";
@@ -10,16 +10,19 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Divider } from "@material-ui/core";
-import { addItemAsync } from "../../shoppingCart/shoppingCartSlice";
+import {
+  addItemAsync,
+  isMovieInCart,
+} from "../../shoppingCart/shoppingCartSlice";
 
 const useStyles = makeStyles({
   root: {
     maxWidth: "80%",
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 70,
+    margin: "auto",
   },
   media: {
+    margin: "auto",
+    marginTop: 70,
     maxWidth: 500,
     maxHeight: 800,
   },
@@ -29,6 +32,7 @@ const MediaDetail = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { media } = props;
+  const isItemInCart = useSelector(isMovieInCart(media.id));
 
   return media ? (
     <Card className={classes.root} justify="space-around">
@@ -93,6 +97,7 @@ const MediaDetail = (props) => {
           size="large"
           color="primary"
           onClick={() => dispatch(addItemAsync(media))}
+          disabled={isItemInCart}
         >
           Add to cart
           <ShoppingCartIcon />
@@ -106,6 +111,7 @@ const MediaDetail = (props) => {
 
 MediaDetail.propTypes = {
   media: PropTypes.shape({
+    id: PropTypes.number,
     genres: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -130,6 +136,7 @@ MediaDetail.propTypes = {
 MediaDetail.defaultProps = {
   release_date: "",
   production_companies: [""],
+  id: 0,
 };
 
 export default MediaDetail;
