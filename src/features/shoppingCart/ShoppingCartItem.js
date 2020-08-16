@@ -18,10 +18,12 @@ const ShoppingCartItem = (props) => {
       display: "flex",
       flexDirection: matches ? "column" : "row",
       justifyContent: "space-between",
+      marginBottom: 10,
     },
     detailsRight: {
       display: "flex",
       flexDirection: "column",
+      alignItems: "center",
       justifyContent: "center",
       margin: 5,
       minWidth: 180,
@@ -37,6 +39,10 @@ const ShoppingCartItem = (props) => {
       width: 270,
       height: 380,
       margin: 5,
+    },
+    button: {
+      width: "100%",
+      marginTop: 10,
     },
     controls: {
       display: "flex",
@@ -67,7 +73,11 @@ const ShoppingCartItem = (props) => {
         </Typography>
       </div>
       <div className={classes.detailsRight}>
+        <Typography component="h5" variant="h5">
+          $0.99
+        </Typography>
         <Button
+          className={classes.button}
           data-testid="addToCartButton"
           variant="outlined"
           size="large"
