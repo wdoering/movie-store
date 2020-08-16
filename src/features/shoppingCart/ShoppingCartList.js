@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const ShoppingCartList = () => {
   const classes = useStyles();
   const shoppingCartList = useSelector(selectShoppingCartList);
-  // const shoppingCartList = [{}, {}];
 
   return (
     <main className={classes.content}>

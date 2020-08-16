@@ -50,7 +50,6 @@ const ShoppingCartItem = (props) => {
   const dispatch = useDispatch();
   const { media } = props;
 
-  console.log(matches);
   return (
     <Card className={classes.root}>
       <CardMedia
