@@ -24,11 +24,18 @@ export const shoppingCartSlice = createSlice({
 
 export const { addItem, removeItem } = shoppingCartSlice.actions;
 
-//Thunk example with loading mock
 export const addItemAsync = (item) => (dispatch) => {
   dispatch(showSpinner());
   setTimeout(() => {
     dispatch(addItem(item));
+    dispatch(hideSpinner());
+  }, 500);
+};
+
+export const removeCartItem = (item) => (dispatch) => {
+  dispatch(showSpinner());
+  setTimeout(() => {
+    dispatch(removeItem(item));
     dispatch(hideSpinner());
   }, 500);
 };

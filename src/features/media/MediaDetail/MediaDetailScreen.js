@@ -27,7 +27,7 @@ const MediaDetailScreen = () => {
     <div className={classes.root}>
       <CssBaseline />
       <MiniDrawer></MiniDrawer>
-      {media && <MediaDetail media={media}></MediaDetail>}
+      <MediaDetail media={media}></MediaDetail>
     </div>
   );
 };
