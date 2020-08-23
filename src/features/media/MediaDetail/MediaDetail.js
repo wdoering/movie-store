@@ -32,7 +32,8 @@ const MediaDetail = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { media } = props;
-  const isItemInCart = useSelector(isMovieInCart(media.id));
+  let mediaId = media && media.id;
+  const isItemInCart = useSelector(isMovieInCart(mediaId));
 
   return media ? (
     <Card className={classes.root} justify="space-around">

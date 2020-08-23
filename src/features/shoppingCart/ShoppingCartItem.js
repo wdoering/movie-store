@@ -7,16 +7,16 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../shoppingCart/shoppingCartSlice";
+import { removeCartItem } from "../shoppingCart/shoppingCartSlice";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const ShoppingCartItem = (props) => {
-  const matches = useMediaQuery("(max-width:375px)");
+  const matches = useMediaQuery("(min-width:420px)");
 
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
-      flexDirection: matches ? "column" : "row",
+      flexDirection: matches ? "row" : "column",
       justifyContent: "space-between",
       marginBottom: 10,
     },
@@ -36,7 +36,7 @@ const ShoppingCartItem = (props) => {
       margin: 5,
     },
     poster: {
-      width: 270,
+      width: 280,
       height: 380,
       margin: 5,
     },
@@ -82,7 +82,7 @@ const ShoppingCartItem = (props) => {
           variant="outlined"
           size="large"
           color="primary"
-          onClick={() => dispatch(removeItem(media))}
+          onClick={() => dispatch(removeCartItem(media))}
         >
           Delete
           <DeleteIcon />
