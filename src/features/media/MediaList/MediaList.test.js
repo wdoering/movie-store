@@ -24,10 +24,11 @@ const store = mockStore({
 });
 describe("testing store mock", () => {
   test("renders the card with a text sent by prop", () => {
+    const getMoreMedia = jest.fn();
     const { getByRole } = render(
       <Provider store={store}>
         <Router>
-          <MediaList />
+          <MediaList pageNumber={1} getMoreMedia={getMoreMedia} />
         </Router>
       </Provider>
     );
