@@ -127,9 +127,7 @@ MediaDetail.propTypes = {
     production_companies: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
-        logo_path: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        origin_country: PropTypes.string.isRequired,
       })
     ),
   }),
