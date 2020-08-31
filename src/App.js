@@ -6,11 +6,18 @@ import MediaDetailScreen from "./features/media/MediaDetail/MediaDetailScreen";
 import { useSelector } from "react-redux";
 import { selectDarkTheme } from "./features/loading/loadingSlicer";
 import { Counter } from "./features/counter/Counter";
-import { MEDIA, MEDIA_DETAIL, GENRE, SHOPPING_CART } from "./Constants";
+import {
+  MEDIA,
+  MEDIA_DETAIL,
+  GENRE,
+  SHOPPING_CART,
+  CONTACT_US,
+} from "./Constants";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 import CircularLoading from "./features/loading/CircularLoading";
 import ShoppingCartScreen from "./features/shoppingCart/ShoppingCartScreen";
+import ContactScreen from "./features/ContactUs/ContactScreen";
 
 const App = () => {
   const appTheme = useSelector(selectDarkTheme);
@@ -42,6 +49,9 @@ const App = () => {
               </Route>
               <Route path={`/${SHOPPING_CART}`}>
                 <ShoppingCartScreen></ShoppingCartScreen>
+              </Route>
+              <Route path={`/${CONTACT_US}`}>
+                <ContactScreen></ContactScreen>
               </Route>
               <Route path="/">
                 <GenreScreen></GenreScreen>

@@ -26,7 +26,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode, selectDarkTheme } from "../loading/loadingSlicer";
-import { SHOPPING_CART, HOME } from "../../Constants";
+import { SHOPPING_CART, HOME, CONTACT_US } from "../../Constants";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -205,7 +205,12 @@ export default function MiniDrawer() {
             </ListItemIcon>
             <ListItemText primary={"Your cart"}></ListItemText>
           </ListItem>
-          <ListItem button>
+          <ListItem
+            button
+            onClick={() => {
+              handleNavigation(CONTACT_US);
+            }}
+          >
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
