@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
 import genreReducer from "../features/genre/genreSlice";
 import mediaReducer from "../features/media/mediaSlice";
 import loadingReducer from "../features/loading/loadingSlicer";
 import shoppingCartReducer from "../features/shoppingCart/shoppingCartSlice";
-
+import logger from "../middlewares/logger";
 export default configureStore({
   reducer: {
     counter: counterReducer,
@@ -13,4 +13,5 @@ export default configureStore({
     loading: loadingReducer,
     shoppingCart: shoppingCartReducer,
   },
+  middleware: [...getDefaultMiddleware(), logger],
 });
